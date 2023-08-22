@@ -1,7 +1,10 @@
 [package]
-name = "hello_world"
+name = "idle_bolt"
 version = "0.1.0"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Billy Richardson <richardsondev>"]
 edition = "2018"
 
 [dependencies]
+enigo = "0.1.2"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.7.6"

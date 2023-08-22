@@ -1,52 +1,47 @@
-# Rust Application Template
+# IdleBolt
 
-This is a template project to build a Rust application using GitHub Actions and automatically publish release artifacts for Windows, Linux, and macOS.
+IdleBolt is a cross-platform utility designed to monitor mouse activity and lock the user account after a period of inactivity. It ensures that users remain interactive, making it especially useful for shared and public computers or workstations where security is a priority.
 
-## How to Use
+## Features
 
-1. **Create a new repository from this template.**
-    
-    On GitHub, click the "Use this template" button to create a new repository based on this template.
+- 🌍 **Cross-Platform**: Works seamlessly on Windows, MacOS, and Linux.
+- ⏰ **Customizable Timeout**: Set the inactivity duration after which the system will be locked.
+- 📏 **Customizable Movement Threshold**: Specify how much the mouse must move to be considered active.
+- 📜 **Configuration File**: Easily tailor the tool's behavior via a configuration file.
+- 🔄 **Auto Recovery**: The utility is designed to handle errors gracefully, ensuring continuous monitoring.
 
-2. **Clone your new repository.**
-    
-    Clone your newly created repository to your local machine and navigate to the root directory of the project.
+## Installation
 
-3. **Run the project locally.**
+### From Source
 
-    You can run the project locally by using the following command in your terminal:
-    
-    ```bash
-    cargo run
-    ```
+```bash
+git clone https://github.com/richardsondev/IdleBolt.git
+cd IdleBolt
+cargo build --release
+```
 
-    This command will compile your code and run the resulting executable.
+The executable will be in the `target/release` directory.
 
-4. **Commit and push changes.**
-    
-    After making changes, commit and push to your repository. GitHub Actions will automatically start the build process.
+### Download
 
-## GitHub Actions
+You can also download pre-compiled binaries from the [Releases](https://github.com/richardsondev/IdleBolt/releases) page.
 
-This project uses GitHub Actions for continuous integration. Upon each push to your repository or release creation, the workflow will:
+## Usage
 
-- Check out the latest code.
-- Set up the necessary Rust environment.
-- Build and test the project.
-- Create release artifacts for Windows, Linux, and macOS. (Only on release creation events)
+1. Run the `IdleBolt` executable.
+2. To customize the inactivity duration and movement threshold, create a `config.toml` in the same directory as the executable. Example:
 
-The artifacts will then be available for download from the "Actions" tab on your repository and also from the "Releases" tab for release events.
+```toml
+timeout = 300 # in seconds, 300 seconds is 5 minutes
+movement_threshold = 0.05 # 5% of the screen width/height
+```
 
-## Docker image
+3. The system will automatically lock if the mouse doesn't move beyond the set threshold within the specified timeout.
 
-This project also contains `buildpush.sh` which will build a distroless Docker image with the application as the entry point. By default, the 
-script will push the built multi-arch images to DockerHub. [Here](https://hub.docker.com/r/richardsondev/hello_world/tags) is an example of 
-what it would look like.
+## Contribution
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please fork the repository and open a pull request with your changes or open an issue to discuss any ideas.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
